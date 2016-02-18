@@ -16,6 +16,7 @@ import javafx.scene.chart.NumberAxis;
 import javafx.scene.chart.XYChart;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.input.ScrollEvent;
+import javafx.scene.layout.Pane;
 import javafx.scene.layout.Priority;
 import javafx.scene.layout.VBox;
 
@@ -25,7 +26,7 @@ import javafx.scene.layout.VBox;
  */
 public class Charts {
 
-    public static void createCharts(final File file, final VBox chartsPanel) {
+    public static void createCharts(final File file, final Pane chartsPanel) {
         final String[] yAxisNames = {"", "Temperature", "Pressure", "Force", "Volume", "# of Molecules"};
         final String[] chartColors = {"", "red", "blue", "green", "purple", "orange"};
 
@@ -84,7 +85,7 @@ public class Charts {
         });
     }
 
-    private static void addScrollAndMouseDragListeners(final LineChart<Number, Number> chart, final NumberAxis xAxis, final VBox chartsPanel) {
+    private static void addScrollAndMouseDragListeners(final LineChart<Number, Number> chart, final NumberAxis xAxis, final Pane chartsPanel) {
         chart.setOnScroll((ScrollEvent event) -> {
             event.consume();
             if (event.getDeltaY() == 0)
@@ -112,7 +113,7 @@ public class Charts {
         });
     }
 
-    private static void updateXAxisBounds(double lowerBound, double upperBound, final VBox chartsPanel) {
+    private static void updateXAxisBounds(double lowerBound, double upperBound, final Pane chartsPanel) {
         for (final Node child : chartsPanel.getChildren()) {
             final NumberAxis axis = (NumberAxis) ((LineChart) child).getXAxis();
             axis.setAutoRanging(false);
