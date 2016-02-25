@@ -27,8 +27,8 @@ import javafx.scene.layout.VBox;
 public class Charts {
 
     public static void createCharts(final File file, final Pane chartsPanel) {
-        final String[] yAxisNames = {"", "Temperature", "Pressure", "Force", "Volume", "# of Molecules"};
-        final String[] chartColors = {"", "red", "blue", "green", "purple", "orange"};
+        final String[] yAxisNames = {"", "Temperature", "Pressure", "Force", "Volume", "A Molecules", "B Molecules", "Simulation", "Energy Display", "Trace", "Velocity", "Impact Force", "Show Molecules", "Show Avg Values"};
+        final String[] chartColors = {"", "red", "blue", "green", "purple", "orange", "Brown", "Magenta", "Olive", "Chocolate", "Lime", "Cyan", "DarkBlue", "LightBlue"};
 
         final List<Number[]> data = new ArrayList<>();
         try (BufferedReader reader = new BufferedReader(new FileReader(file))) {
@@ -113,7 +113,7 @@ public class Charts {
         });
     }
 
-    private static void updateXAxisBounds(double lowerBound, double upperBound, final Pane chartsPanel) {
+    private static void updateXAxisBounds(final double lowerBound, final double upperBound, final Pane chartsPanel) {
         for (final Node child : chartsPanel.getChildren()) {
             final NumberAxis axis = (NumberAxis) ((LineChart) child).getXAxis();
             axis.setAutoRanging(false);
